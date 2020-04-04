@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mopidy
+  labels:
+    app: mopidy
+spec:
+  rules:
+  - host: radio.mydomain.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: mopidy
+          servicePort: mopidy
+      - path: /listen
+        backend:
+          serviceName: icecast
+          servicePort: icecast

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: icecast
+  labels:
+    app: icecast
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: icecast
+  template:
+    metadata:
+      labels:
+        app: icecast
+    spec:
+      containers:
+      - name: icecast
+        image: vimagick/icecast:latest
+        ports:
+        - containerPort: 8000
+          name: icecast
+        livenessProbe:
+          httpGet:
+            path: /status.xsl
+            port: icecast
+        readinessProbe:
+          httpGet:
+            path: /status.xsl
+            port: icecast
+        volumeMounts:
+        - name: config
+          mountPath: /etc/icecast.xml
+          subPath: icecast.xml
+      volumes:
+      - name: config
+        configMap:
+          name: icecast-config
+

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mopidy
+  labels:
+    app: mopidy
+spec:
+  ports:
+  - port: 6680
+    targetPort: mopidy
+    protocol: TCP
+    name: mopidy
+  selector:
+    app: mopidy
