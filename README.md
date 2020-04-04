@@ -12,7 +12,7 @@ This is a work in progress at the moment but the basics work.
 - Harass the Docker image maintainers into providing tags other than `latest`
 
 ## You will need
-- Kubernetes with and Ingress Controller e.g. Nginx Ingress, Traefik etc - Tested on 1.16 but should work on any fairly recent version
+- Kubernetes with an Ingress Controller e.g. Nginx Ingress, Traefik etc - Tested on 1.16 but should work on any fairly recent version
 - A Spotify Premium Account
 
 ## How to install
