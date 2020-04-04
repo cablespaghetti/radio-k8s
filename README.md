@@ -1,9 +1,9 @@
 # Radio K8S
 Run an Internet radio station on Kubernetes using Spotify, [Mopidy/Iris](https://github.com/jaedb/Iris) and [Icecast](https://icecast.org/).
 
-At work we missed our office Sonos setup so I recreated the experience using a Raspberry Pi (and Raspbian), [Mopidy/Iris](https://github.com/jaedb/Iris) and [Icecast](https://icecast.org/). This repository is my work to recreate that on Kubernetes...because everything is better with more Kubernetes.
+When we all moved to working from home, we missed our office Sonos system, which allowed anyone to inflict their music taste on the whole office. Initially I recreated the experience using a Raspberry Pi (and Raspbian), [Mopidy/Iris](https://github.com/jaedb/Iris) and [Icecast](https://icecast.org/). However this was fiddly to set up and maintain. This repository is my work to recreate this on Kubernetes, so anyone can set something similar up for their friends on colleagues.
 
-This is a work in progress at the moment but the basics work.
+**This is a work in progress (see to-do list below), and is never going to be "production grade"**
 
 ## To-Do
 - Password protection
