@@ -15,6 +15,7 @@ When we all moved to working from home, we missed our office Sonos system, which
 - Fill in your Spotify account details in `mopidy-configmap.yaml`
 - Fill in your domain name in `ingress.yaml`
 - Optional: Edit `mopidy-configmap.yaml` and `icecast-configmap.yaml` to change the `hackme` password used by Icecast to something a little more secure. Although only the `/listen` path of Icecast is exposed to the Internet via the Ingress so this isn't a huge security risk really...
+- Run `kubectl apply -f .`
 
 ## HTTPS and Password Protection
 I am using Traefik as my Ingress Controller, installed using the [stable/traefik](https://github.com/helm/charts/tree/master/stable/traefik) Helm Chart. Conveniently this supports basic authentication and HTTPS using Let's Encrypt with a bit of config. You should follow the documention for that project but I've committed an example Helm [values file](./traefik-values.yaml.example) which should help to get you up and running.
