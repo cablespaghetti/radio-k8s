@@ -1,21 +1,26 @@
 # Radio K8S
 Run an Internet radio station on Kubernetes using Spotify, [Mopidy/Iris](https://github.com/jaedb/Iris) and [Icecast](https://icecast.org/).
 
-When we all moved to working from home, we missed our office Sonos system, which allowed anyone to inflict their music taste on the whole office. Initially I recreated the experience using a Raspberry Pi (and Raspbian), [Mopidy/Iris](https://github.com/jaedb/Iris) and [Icecast](https://icecast.org/). However this was fiddly to set up and maintain. This repository is my work to recreate this on Kubernetes, so anyone can set something similar up for their friends on colleagues.
+When we all moved to working from home, we missed our office Sonos system, which allowed anyone to inflict their music taste on the whole office. Initially I recreated the experience using a Raspberry Pi (and Raspbian), [Mopidy/Iris](https://github.com/jaedb/Iris) and [Icecast](https://icecast.org/). However this was fiddly to set up and maintain. This is the second incarnation using Kubernetes, so anyone can set something similar up for their friends on colleagues.
 
-**This is a work in progress (see to-do list below), and is never going to be "production grade"**
+**This is never going to be "production grade", and is intended as a bit of fun only!**
 
 ## To-Do
-- Password protection
-- HTTPS
-- Not storing passwords in ConfigMaps
+- Stop storing passwords in ConfigMaps
 - Harass the Docker image maintainers into providing tags other than `latest`
+- Raspberry Pi support (the Docker images used only support amd64)
+- Maybe make this a Helm chart for easier configuration
 
 ## You will need
-- Kubernetes with an Ingress Controller e.g. Nginx Ingress, Traefik etc - Tested on 1.16 but should work on any fairly recent version
 - A Spotify Premium Account
+- Kubernetes with an Ingress Controller e.g. Traefik
+  - Tested on Kubernetes 1.16 but it should work with any fairly recent version
+  - The resources required are tiny; my cluster is a [Civo Cloud](https://www.civo.com/kube100) k3s cluster on a single node with 1 core and 2GB RAM
 
 ## How to install
 - Fill in your Spotify account details in `mopidy-configmap.yaml`
 - Fill in your domain name in `ingress.yaml`
 - Optional: Edit `mopidy-configmap.yaml` and `icecast-configmap.yaml` to change the `hackme` password used by Icecast to something a little more secure. Although only the `/listen` path of Icecast is exposed to the Internet via the Ingress so this isn't a huge security risk really...
+
+## HTTPS and Password Protection
+I am using Traefik as my Ingress Controller, installed using the [stable/traefik](https://github.com/helm/charts/tree/master/stable/traefik) Helm Chart. Conveniently this supports basic authentication and HTTPS using Let's Encrypt with a bit of config. You should follow the documention for that project but I've committed an example Helm [values file](./traefik-values.yaml.example) which should help to get you up and running.
