@@ -18,7 +18,7 @@ When we all moved to working from home, we missed our office Sonos system, which
 - Run `kubectl apply -f .`
 
 ## HTTPS and Password Protection
-I am using Traefik as my Ingress Controller, installed using the [stable/traefik](https://github.com/helm/charts/tree/master/stable/traefik) Helm Chart. Conveniently this supports basic authentication and HTTPS using Let's Encrypt with a bit of config. You should follow the documention for that project but I've committed an example Helm [values file](./traefik-values.yaml.example) which should help to get you up and running.
+I am using Traefik as my Ingress Controller, installed using the [stable/traefik](https://github.com/helm/charts/tree/master/stable/traefik) Helm Chart. Conveniently this supports basic authentication and HTTPS using Let's Encrypt with a bit of config. You should follow the documention for that project but I've committed an example Helm [values file](./traefik-values.yaml.example) and [Ingress configuration](./ingress.yaml) which should help to get you up and running.
 
 ## To-Do
 - Stop storing passwords in ConfigMaps.

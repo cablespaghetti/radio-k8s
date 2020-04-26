@@ -4,6 +4,14 @@ metadata:
   name: mopidy
   labels:
     app: mopidy
+  annotations:
+    ingress.kubernetes.io/force-hsts: "true"
+    ingress.kubernetes.io/hsts-max-age: "315360000"
+    ingress.kubernetes.io/hsts-preload: "true"
+    ingress.kubernetes.io/ssl-redirect: "true"
+    ingress.kubernetes.io/hsts-include-subdomains: "true"
+    ingress.kubernetes.io/auth-type: basic
+    ingress.kubernetes.io/auth-secret: mopidy
 spec:
   rules:
   - host: radio.mydomain.com
@@ -17,3 +25,17 @@ spec:
         backend:
           serviceName: icecast
           servicePort: icecast
+---
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: mopidy
+  labels:
+    app: mopidy
+# Basic auth to protect the ingress. Can use htpasswd to generate passwords
+# > htpasswd -n -b testuser testpass
+stringData:
+  htpasswd: |-
+    testuser:$apr1$JXRA7j2s$LpVns9vsme8FHN0r.aSt11
+
