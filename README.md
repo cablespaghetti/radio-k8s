@@ -20,10 +20,15 @@ When we all moved to working from home, we missed our office Sonos system, which
 ## HTTPS and Password Protection
 I am using Traefik as my Ingress Controller, installed using the [stable/traefik](https://github.com/helm/charts/tree/master/stable/traefik) Helm Chart. Conveniently this supports basic authentication and HTTPS using Let's Encrypt with a bit of config. You should follow the documention for that project but I've committed an example Helm [values file](./traefik-values.yaml.example) and [Ingress configuration](./ingress.yaml) which should help to get you up and running.
 
+## ARM64 Architecture support
+The Docker images used only support the amd64 architecture. I've built some arm64 images you can use instead if you want to run on a Raspberry Pi ([DockerFiles here](./docker)):
+
+- cablespaghetti/icecast:2.4.4-alpine
+- cablespaghetti/iris:3.47.0-1
+
 ## To-Do
 - Stop storing passwords in ConfigMaps.
 - Harass the Docker image maintainers into providing tags other than `latest`.
-- Raspberry Pi support (the Docker images used only support amd64).
 - Maybe make this a Helm chart for easier configuration.
 - Stream silence when music is paused/stopped rather than having no stream.
 - Fix resume when track is paused. Currently you must restart the track.

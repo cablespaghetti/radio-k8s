@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: icecast
-        image: vimagick/icecast:latest
+        image: cablespaghetti/icecast:2.4.4-alpine
         ports:
         - containerPort: 8000
           name: icecast
