@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mopidy
-        image: cablespaghetti/iris:3.47.0-1
+        image: jaedb/iris:latest
         ports:
         - containerPort: 6680
           name: mopidy
