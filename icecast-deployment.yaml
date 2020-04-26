@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: icecast
-        image: cablespaghetti/icecast:2.4.4-alpine
+        image: cablespaghetti/icecast:2.4.4-1-alpine
         ports:
         - containerPort: 8000
           name: icecast
@@ -32,6 +32,10 @@ spec:
         - name: config
           mountPath: /etc/icecast.xml
           subPath: icecast.xml
+        - name: config
+          mountPath: /usr/share/icecast/web/silence.mp3
+          subPath: silence.mp3
+
       volumes:
       - name: config
         configMap:

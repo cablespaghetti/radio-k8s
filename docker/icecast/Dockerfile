@@ -1,7 +1,7 @@
 # Copied from here: https://github.com/vimagick/dockerfiles/blob/master/icecast/Dockerfile
 FROM alpine
 
-RUN apk add --no-cache icecast
+RUN apk add --no-cache icecast mailcap
 
 EXPOSE 8000
 
