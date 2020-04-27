@@ -23,7 +23,7 @@ I am using Traefik as my Ingress Controller, installed using the [stable/traefik
 ## ARM64 Architecture support
 The Docker images used only support the amd64 architecture. I've built some arm64 images you can use instead if you want to run on a Raspberry Pi ([DockerFiles here](./docker)):
 
-- cablespaghetti/icecast:2.4.4-alpine
+- cablespaghetti/icecast:2.4.4-1-alpine
 - cablespaghetti/iris:3.47.0-1
 
 ## To-Do
